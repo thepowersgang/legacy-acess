@@ -1,0 +1,7 @@
+XMLA Script Object Layout
+- Core - Functions Exposed by the interpreter
+ + Database - DB Functions
+ + System - System Control
+- Application - This Application
+ + Windows - ID Listed windows
+  - Elements - ID Listed Elements

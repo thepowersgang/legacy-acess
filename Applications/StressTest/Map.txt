@@ -1,0 +1,58 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00400000                loadTo=0x400000
+                0x00400040                entrypoint=start
+                0x00400000                .=loadTo
+
+.text           0x00400000      0x1cf load address 0x00400000
+                0x00400000                code=.
+ *(.text)
+ .text          0x00400000       0x40 ForkBomb.o
+                0x0040000c                _main
+ .text          0x00400040        0xd start.ao
+                0x00400040                start
+ *fill*         0x0040004d        0x3
+ .text          0x00400050      0x17f ../syscalls.ao
+                0x00400114                _readdir
+                0x00400050                _open
+                0x0040014d                _kexec
+                0x004001b5                _opendir
+                0x004000fa                _stat
+                0x0040016c                _waitpid
+                0x004000c4                _seek
+                0x004000e3                _tell
+                0x00400196                _kdebug
+                0x00400186                _fork
+                0x004000a5                _write
+                0x0040012e                _ioctl
+                0x00400086                _read
+                0x0040006f                _close
+ *(.rodata*)
+
+.data           0x00401000        0x2 load address 0x00401000
+                0x00401000                data=.
+ *(.data)
+ .data          0x00401000        0x2 ../syscalls.ao
+
+.bss            0x00401004        0x0 load address 0x00401004
+                0x00401004                _sbss=.
+ *(COMMON)
+ *(.bss)
+                0x00401004                _ebss=.
+                0x00401004                bss=.
+                0x00401004                end=.
+LOAD ForkBomb.o
+LOAD start.ao
+LOAD ../syscalls.ao
+OUTPUT(ForkBomb elf32-i386)
+
+.comment        0x00401004       0x4e
+ .comment       0x00401004       0x10 ForkBomb.o
+ .comment       0x00401014       0x1f start.ao
+ .comment       0x00401033       0x1f ../syscalls.ao

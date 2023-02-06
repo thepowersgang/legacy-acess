@@ -1,0 +1,13 @@
++ /Devices/sockets
+| (All sockets create an new instance on finddir (open) and are bi-directional)
+|- tcp_listen
+|- tcp_connect
+|- udp_listen
+|- udp_connect
+
+
+IOCtl Methods
+ GET_IPV4,SET_IPV4 - Gets/Sets destination or listen IPv4 Address
+ GET_IPV6,SET_IPV6 - Gets/Sets destination or listen IPv6 Address
+ GET_SPORT,SET_SPORT - Gets/Sets source port number
+ GET_DPORT,SET_DPORT - Gets/Sets destination port number

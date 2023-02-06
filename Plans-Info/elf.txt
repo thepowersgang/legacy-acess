@@ -1,0 +1,35 @@
+char	- 1 byte
+word	- 2 bytes
+dword	- 4 bytes
+File Header
+	char	identifier[16]
+		0-3:0x7E, 'E', 'L', 'F'
+		4:	Class
+		5:	Data encoding
+			0 - Invalid
+			1 - Little Endian	(LSB)
+			2 - Big Endian	(MSB)
+		6:	Version
+		7:	Padding Start
+	word	file type
+		0 - None
+		1 - Relocatable (Libary)
+		2 - Executable
+		3 - Shared Object
+		4 - Core
+	word	machine
+	dword	version
+		0 - Invalid
+	dword	entrypoint (Address)
+	dword	program header table (Offset)
+	dword	section header table (Offset)
+	dword	flags
+	word	elf header size
+	word	program header entry size
+	word	program header entry count
+	word	section header entry size
+	word	section header entry count
+	word	section header string table index (Index in section  header)
+
+Section Header Table
+	

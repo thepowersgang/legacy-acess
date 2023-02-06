@@ -1,0 +1,5 @@
+#!/bin/bash
+make all
+cp ../ld-acess.so /mnt/AcessHDD/Acess/Libs
+umount /mnt/AcessHDD
+mount /mnt/AcessHDD

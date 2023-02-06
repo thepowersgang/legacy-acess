@@ -1,0 +1,13 @@
+== AcessOS TODO List ==
+- Immediate
+ > 20090420 - Bugfix Dynamic Linker
+ 
+- Medium Distance
+ > 20090423 - Implement "Heap Wrapping" about multiboot modules.
+ > 20090420 - Test on Real Hardware
+ > 20090420 - Make entire kernel pre-emptable.
+ > 20090420 - Finalise System Calls with mount management and setuid
+ > 20090421 - Implement EDI Implementation (Combine with DevFS)
+
+- Long Distance
+ > 20090420 - Complete GUI Shell

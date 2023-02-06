@@ -1,0 +1,5 @@
+#!/bin/bash
+make acessos
+cp AcessOS.bin /mnt/AcessFDD/AcessOS.bin
+umount /mnt/AcessFDD
+mount /mnt/AcessFDD

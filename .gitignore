@@ -1,0 +1,15 @@
+.*
+*.o
+*.ao
+*.dmp
+*.dsm
+
+*.exe
+*.axe
+*.elf
+*.bin
+*.dll
+*.so
+
+Map.txt
+map.txt

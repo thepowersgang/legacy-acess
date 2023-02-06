@@ -1,0 +1,99 @@
+; AcessBasic Test Command Prompt
+; Assembler Stub
+
+[BITS 32]
+
+extern _main
+extern codeLength
+extern loadTo
+extern entrypoint
+extern magic
+
+global _start
+global _gAxeHdr
+
+FLAGS equ 0
+MAXMEM	equ	0	; 4Mb
+
+;Header
+db	"AXE",0
+_gAxeHdr:
+dd codeLength	;Code Size
+dd loadTo		;Load Address
+dd _start	;Entrypoint
+dd MAXMEM	;Maximum Used Memory
+dd FLAGS	;Flags
+dd magic+FLAGS+MAXMEM
+
+;Code
+_start:
+	push eax
+	call _main
+	
+	xchg bx, bx
+	
+	mov eax, 1
+	int 0xac
+	
+	ret
+	ret
+	
+;String Compare
+_strcmp:
+	push ebp
+	mov ebp, esp
+	push ebx
+	push ecx
+	
+	mov ebx, [ebp+8]
+	mov ecx, [ebp+12]
+.cmp:
+	mov al, BYTE [ecx]
+	cmp BYTE [ebx], al
+	jnz	.out
+	cmp BYTE [ecx],0
+	jnz	.out
+	inc ebx
+	inc edx
+	jmp	.cmp
+.out:
+	mov eax, DWORD 0
+	mov al, BYTE [ebx]
+	sub al, BYTE [ecx]
+	;Cleanup
+	pop	ecx
+	pop ebx
+	pop ebp
+	ret
+	
+;String Copy
+_strcpy:
+	push ebp
+	mov ebp, esp
+	push ebx
+	push ecx
+	push edx
+	mov ebx, [ebp+8]	;Src
+	mov ecx, [ebp+12]	;Dest
+.cmp:
+	cmp BYTE [ebx], 0
+	jnz .out
+	mov dl, BYTE [ebx]
+	mov BYTE [ecx], dl
+	inc ebx
+	inc ecx
+	jmp .cmp
+.out:	;Cleanup
+	pop edx
+	pop ecx
+	pop ebx
+	pop ebp
+	ret
+
+	
+[section .bss]
+[global _startHeap]
+[global _endHeap]
+_startHeap:
+resb 0x4000	;Heap Space
+_endHeap:

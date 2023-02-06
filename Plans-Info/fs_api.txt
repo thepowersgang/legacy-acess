@@ -1,0 +1,45 @@
+AcessOS FS Driver API
+- Required Headers: "vfs.h"
+
+Functions to implement:
+
+`vfs_node *initDevice(char *device)`
+- Opens and initialises a device/file for use with the driver
+
+`int read(vfs_node *node, int offset, int length, void *buffer)`
+- Reads data from the specified node to the buffer
+
+`int write(vfs_node *node, int offset, int length, void *buffer)`
+- Writes data from the buffer to disk
+
+`vfs_node *readdir(vfs_node *dirNode, int position)`
+- Read a directory entry at the specified postiton
+
+`vfs_node *finddir(vfs_node *dirNode, char *filename)`
+- Return node pointer the filename specified
+
+`int closeDevice(vfs_node *node)`
+- Clean up, flush and close the device/file handle
+
+structure `vfs_node`:
+	name	Filename of node
+	nameLength	Length of filename
+	inode	Inode number of node
+	length	Length of the file in bytes
+	impl	Filesystem specific variable - usually disk id
+	
+	uid		User ID of owner
+	gid		Group ID of owner
+	mode	Permision Flags on file
+	flags	Other flags (Directory, readonly, hidden,...)
+	atime	Unix timestamp of last access
+	mtime	Unix timestamp of last modifcation
+	ctime	Unix timestamp of creation
+	
+	read	Function pointer to read data
+	write	Function pointer to write data
+	close	Function pointer to close file
+	readdir	Function pointer to read directory
+	finddir	Function pointer to find directory entry
+	mknod	Function pointer to create a new directory entry
+	unlink	Function pointer to remove this file

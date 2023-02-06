@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo losetup /dev/loop0 /home/hodgeja/Bochs/OSDev/acessBasic.img
+sudo losetup /dev/loop1 /home/hodgeja/Bochs/OSDev/acess_seperate.img.2
+sudo losetup /dev/loop2 /home/hodgeja/Bochs/OSDev/AcessData.img -o 32256
+mount /mnt/AcessFDD
+mount /mnt/AcessHDD
+mount /mnt/AcessHDD2
+

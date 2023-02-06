@@ -1,0 +1,148 @@
+<html>
+
+<head>
+<META NAME="Description" CONTENT="www.NTFS.com - All about NTFS File System. NTFS Reader for DOS. Data Recovery Freeware and Shareware. NTFS DOS Boot Disk.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>NTFS.com  Sparse Files on NTFS5 volumes</title>
+<link REL=stylesheet HREF="comol.css" TYPE="text/css">
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0"  width="100%">
+  <tr>
+    <td width="50%" height="76"><a href="http://www.ntfs.com"><img src="images/logoNTFS2.gif" alt="NTFS.com - Data Recovery Software" width="210" height="34" border="0"></a></td>
+    <td width="50%" >
+
+  <p><b><font color="#FF0000">New version! </font></b><a href="http://www.ntfs.com/boot-disk.htm">Active@ Boot Disk (Win 
+Edition)</a> is a bootable Windows-based Live CD/DVD for system recovery 
+purposes. </p>
+
+    
+</td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2">
+    <div align="center">
+      <center>
+      <table border="0" cellpadding="0" cellspacing="0" height="23" width="100%" >
+        <tr>
+          <td width="50%"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif" ></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1"></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif"></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1"></td>
+         <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif" ></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1" ></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif"></td>
+          <td width="50%"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+        </tr>
+        <tr>
+          <td width="50%" height="1"></td>
+          <td nowrap width="190" height="22" rowspan="3" background="images/zakladka2.gif" >
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="http://www.ntfs.com"><font color="#FFFFFF">NTFS GENERAL INFORMATION</font></a></p></td>
+          <td width="190" height="22" rowspan="3" background="images/zakladka1.gif">
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="products.htm"><font color="#FFFFFF">Data Recovery Software</font></a></p></td>
+          <td width="190" height="22" rowspan="3" background="images/zakladka1.gif">
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="faq.htm"><font color="#FFFFFF">QUESTIONS &amp; ANSWERS</font></a></p></td>
+         
+          <td width="50%" height="1"></td>
+
+         
+        </tr>
+        <tr>
+          <td width="50%" height="8"></td>
+          <td width="50%" height="8"></td>
+        </tr> <tr>
+          <td width="50%" bgcolor="#284F9E" height="13"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+          <td width="50%" bgcolor="#284F9E" height="13"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="1" colspan="2"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" height="1" bgcolor="#FFCC00" colspan="2"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+</table>
+
+ <table>
+ <tr>
+    <td width="100%" height="10">
+              <p style="margin-left: 15; margin-right: 15"><a href="http://www.ntfs.com"><br>NTFS General Information</a>
+    &gt; <a href="http://www.ntfs.com/ntfs_basics.htm">NTFS Basics</a> &gt; <a href="http://www.ntfs.com/ntfs-files-types.htm">NTFS File Types</a> &gt; NTFS Sparse Files</P>
+<h1 align="center">NTFS Sparse Files (NTFS5 only)</h1>
+              <p>A sparse file has an attribute that causes the I/O subsystem to 
+              allocate only meaningful (nonzero) data. Nonzero data is allocated 
+              on disk, and non-meaningful data (large strings of data composed 
+              of zeros) is not. When a sparse file is read, allocated data is 
+              returned as it was stored; non-allocated data is returned, by 
+              default, as zeros. </p>
+              <p>NTFS deallocates sparse data streams and only maintains other 
+              data as allocated. When a program accesses a sparse file, the file 
+              system yields allocated data as actual data and deallocated data 
+              as zeros. </p>
+              <p>NTFS includes full sparse file support for both compressed and 
+              uncompressed files. NTFS handles read operations on sparse files 
+              by returning allocated data and sparse data. It is possible to 
+              read a sparse file as allocated data and a range of data without 
+              retrieving the entire data set, although NTFS returns the entire 
+              data set by default. </p>
+              <p>With the sparse file attribute set, the file system can 
+              deallocate data from anywhere in the file and, when an application 
+              calls, yield the zero data by range instead of storing and 
+              returning the actual data. File system application programming 
+              interfaces (APIs) allow for the file to be copied or backed as 
+              actual bits and sparse stream ranges. The net result is efficient 
+              file system storage and access. Next figure shows how data is 
+              stored with and without the sparse file attribute set. </p>
+              <p><b>Figure 5-4</b> Windows 2000 Data Storage</p>
+<P align="left"><IMG src="images/NTFS-sparse-file.gif" width="438" height="302"></P>
+              <p><b><font color="#FF0000">Important</font></b><br> If you copy or move a sparse file to a FAT or 
+              a non-Windows 2000 NTFS volume, the file is built to its 
+              originally specified size. If the required space is not available, 
+              the operation does not complete.</p>
+              <P>&nbsp;</P>
+<p align="center"><a href="ntfs-encrypted.htm">previous</a> |
+<a href="ntfs_basics.htm">contents</a> | <a href="data-integrity.htm">next</a></p>
+<P>&nbsp;</P>
+</td>
+  </tr>
+  </table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="100%" height="1" bgcolor="#FFCC00">
+    <img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" height="2">
+    <img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" bgcolor="#284F9E" height="12"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%">
+    <h2 align="center" class="small"><a href="http://www.ntfs.com/">NTFS.com &copy;1998-2008</a></h2></td>
+  </tr>
+</table>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-202618-5";
+urchinTracker();
+</script>
+
+
+</body>
+
+</html>

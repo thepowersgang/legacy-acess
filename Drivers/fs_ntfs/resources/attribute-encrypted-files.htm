@@ -1,0 +1,161 @@
+<html>
+
+<head>
+<META NAME="Description" CONTENT="www.NTFS.com - All about NTFS File System. NTFS Reader for DOS. Data Recovery Freeware and Shareware. NTFS DOS Boot Disk.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>NTFS.com $EFS Attribute. Public Key. Private key.</title>
+<link REL=stylesheet HREF="comol.css" TYPE="text/css">
+</head>
+
+<body>
+
+ <table border="0" cellpadding="0" cellspacing="0"  width="100%">
+  <tr>
+    <td width="50%" height="76"><a href="http://www.ntfs.com"><img src="images/logoNTFS2.gif" alt="NTFS.com - Data Recovery Software" width="210" height="34" border="0"></a></td>
+    <td width="50%" >
+
+  <p><b><font color="#FF0000">New version! </font></b><a href="http://www.ntfs.com/boot-disk.htm">Active@ Boot Disk (Win 
+Edition)</a> is a bootable Windows-based Live CD/DVD for system recovery 
+purposes. </p>
+
+    
+</td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2">
+    <div align="center">
+      <center>
+      <table border="0" cellpadding="0" cellspacing="0" height="23" width="100%" >
+        <tr>
+          <td width="50%"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif" ></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1"></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif"></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1"></td>
+         <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif" ></td>
+          <td width="190"><img border="0" src="images/spacer.gif" width="190" height="1" ></td>
+          <td width="1" rowspan="4" ><img border="0" src="images/spacer.gif"></td>
+          <td width="50%"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+        </tr>
+        <tr>
+          <td width="50%" height="1"></td>
+          <td nowrap width="190" height="22" rowspan="3" background="images/zakladka2.gif" >
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="http://www.ntfs.com"><font color="#FFFFFF">NTFS GENERAL INFORMATION</font></a></p></td>
+          <td width="190" height="22" rowspan="3" background="images/zakladka1.gif">
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="products.htm"><font color="#FFFFFF">Data Recovery Software</font></a></p></td>
+          <td width="190" height="22" rowspan="3" background="images/zakladka1.gif">
+          <p align="center">
+          <a class="menu2" style="text-align: center;text-decoration:none;font-weight:bold;font-size:7pt" href="faq.htm"><font color="#FFFFFF">QUESTIONS &amp; ANSWERS</font></a></p></td>
+         
+          <td width="50%" height="1"></td>
+
+         
+        </tr>
+        <tr>
+          <td width="50%" height="8"></td>
+          <td width="50%" height="8"></td>
+        </tr> <tr>
+          <td width="50%" bgcolor="#284F9E" height="13"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+          <td width="50%" bgcolor="#284F9E" height="13"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="1" colspan="2"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" height="1" bgcolor="#FFCC00" colspan="2"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+</table>
+
+ <table>
+  <tr>
+    <td width="100%" height="10">
+     <p style="margin-left: 15; margin-right: 15"><a href="http://www.ntfs.com"><br></a><A 
+      href="http://www.ntfs.com/">NTFS General Information</A> &gt; <A 
+      href="http://www.ntfs.com/ntfs_basics.htm">NTFS Basics</A> &gt; <A 
+      href="http://www.ntfs.com/ntfs-files-types.htm">NTFS File Types</A> &gt; 
+          NTFS Encrypted Files and Folders</P>
+
+        <H1 align=center>EFS - Encrypting File System. Encrypted Files and Folders 
+          (NTFS5 only)</H1>
+        <p><strong>$EFS Attribute</strong></p>
+        <blockquote> 
+          <p>When NTFS encrypts file, it sets flag Encrypted (0x4000) for the 
+            file and creates $EFS attribute for the file where it stores DDFs 
+            and DDRs. This attribute has Attribute ID = 0x100 in NTFS and can 
+            be pretty lengthy, occupying from 0.5K to several kilobytes depending 
+            on number of DDFs and DRFs.</p>
+          <p><img src="images/efs_header.gif" width="352" height="346"></p>
+          <p>Here's an example of $EFS attribute with more details.</p>
+          <blockquote> 
+            <p><img src="images/EFS_example.gif" width="773" height="1314"></p>
+            <p><img src="images/grey.gif" width="40" height="20"> 
+              $EFS attribute size</p>
+            <p><img src="images/blue.gif" width="40" height="20"> 
+              Computer SID and user number. It specifies folder where EFS stores 
+              certificates. In order to get folder name EFS makes some manipulations:</p>
+            <p>5A56B378 1C365429 A851FF09 D040000 - data stored in $EFS,</p>
+            <p>78B3565A 2954361C 09FF15A8 000004D0 - reversed</p>
+            <p>2025018970-693384732-167712168-1232 - converte to decimal</p>
+            <p>S-1-5-21-2025018970-693384732-167712168-1232 - SID prefix added</p>
+            <p>So, the folder will be %User Profile%\Application Data\Microsoft\Crypto\RSA\S-1-5-21-2025018970-693384732-167712168-1232\</p>
+            <p><img src="images/pink.gif" width="40" height="20"> 
+              Public key thumbprint</p>
+            <p><img src="images/yellow.gif" width="40" height="20"> 
+              Private key GUID (also used as container name). This name EFS uses 
+              when it aquires context from CryptoAPI provider. If there's only 
+              one DDFin $EFS attribute, container name can be figured out from 
+              $EFS (this field), but as more users added to the file (more DDFs 
+              or DRFs), PK GUID is not stored for all of them and must be retrieved 
+              from certificate storage based on public key thumbprint. </p>
+            <p><img src="images/red.gif" width="40" height="20"> 
+              Cryptographic provider name = Microsoft Base Cryptographic Provider 
+              v.1.0</p>
+            <p><img src="images/green.gif" width="40" height="20"> 
+              User name, to whom current DDF or DRF belongs</p>
+            <p><img src="images/dark_blue.gif" width="40" height="20"> 
+              Encrypted FEK. Usually FEK is 128-bit long (in case of DESX) but 
+              since it's encrypted with 1024-bit RSA key, its encrypted length 
+              is 1024 bits.</p>
+          </blockquote>
+        </blockquote>
+        <P align=center><a href="internals-encrypted-files.htm">previous</a> |
+        <a href="ntfs_basics.htm">contents</a> |
+        <a href="issues-encrypted-files.htm">next</a></P>
+        <P align=center>&nbsp;</P>
+        </td>
+  </tr>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+  <tr>
+    <td width="100%" height="1" bgcolor="#FFCC00">
+    <img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" height="2">
+    <img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%" bgcolor="#284F9E" height="12"><img border="0" src="images/spacer.gif" width="11" height="1"></td>
+  </tr>
+  <tr>
+    <td width="100%">
+    <h2 align="center" class="small"><a href="http://www.ntfs.com/">NTFS.com &copy;1998-2008</a></h2></td>
+  </tr>
+</table>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-202618-5";
+urchinTracker();
+</script>
+
+
+</body>

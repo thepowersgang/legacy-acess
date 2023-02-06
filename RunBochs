@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ~/Bochs/OSDev
+/opt/BochsDbg/bin/bochs -q
+

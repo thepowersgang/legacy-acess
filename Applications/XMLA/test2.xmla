@@ -1,0 +1,25 @@
+<Application
+	Name="AcessOS XMLA Test"
+	Version="1.0"
+	Category="dev"
+	Author="thePowersGang" >
+	<Code>
+	<![CDATA[
+function TextboxKeydown(Entity: self; Integer: keycode): Integer
+{
+	if(keycode == KEYSYM_RETURN)
+	{
+		Core.MessageBox(self.contents);
+	}
+}
+]]>
+	</Code>
+	<Window id="mainwin" title="AcessOS XMLA Test" width="200" height="200">
+		<Element
+			type="TextBox" id="mainInput"
+			x="100" y="100"
+			width="80" height="30"
+			onKeyDown="TextboxKeydown"
+			value="Test Box" />
+	</Window>
+</Application>

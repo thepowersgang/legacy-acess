@@ -1,0 +1,12 @@
+<Application
+	name="AcessOS XMLA Test"
+	version="1.0"
+	category="Development">
+	<Code>
+	<!--
+	-->
+	</Code>
+	<Window id="mainwin" title="AcessOS XMLA Test" width="200" height="200">
+		<Element type="textbox" id="mainInput" x="100" y="100" width="80" height="30" value="test"/>
+	</Window>
+</Application>

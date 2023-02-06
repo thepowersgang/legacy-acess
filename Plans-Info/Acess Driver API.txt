@@ -1,0 +1,118 @@
+=======================
+== AcessOS Version 1 ==
+-- Driver Interfaces --
+=======================
+
+/-------------------------------\
+|-- General Driver Interfaces --|
+\-------------------------------/
+> All drivers appear under the devfs mount (Usually /Devices)
+> All drivers register through the DevFS API
+ :: dev_addDevice - Adds a device driver
+ :: dev_delDevice - Removes a device driver
+
+/-----------------------------\
+|-- Driver Class Interfaces --|
+\-----------------------------/
+All basic drivers should conform to these interfaces
+and behave in the same way when used by conforming
+applications.
+The IOCtls 0,1 and 2 are common across all devices that
+conform to the Acess Device Framework.
+> IOCtl #0 returns the driver type. The type codes are listed below:
+   0: NULL Driver
+   1: 2D Framebuffer
+   2: Low-Level Audio
+   3: Network Device
+> IOCTL #1 returns a driver identifer in the 4 byte buffer provided
+> IOCTL #2 returns the driver version encoded with Major (High 16 Bits)
+   and Minor (Low 16 Bits) portions
+
+------------------------
+- 2D Video Framebuffer -
+------------------------
+> Single File
+ - Read/Write - Framebuffer Access
+ - Unique IOCtl Calls
+  3: Set Video Mode - Set current video mode given an integer pointer
+  4: Get Video Mode - Return current video mode in given integer pointer
+  5: Find Mode - Finds the closest matching mode to the given mode information
+  6: Get Mode Information - Returns mode information in given pointer
+> STRUCT `tFBVideo_Mode`
+    Uint16	ID;
+	Uint16	Width;
+	Uint16	Height;
+	Uint16	BPP;
+ 
+--------------------------
+- Low-Level Audio Device -
+--------------------------
+> Single File
+ - Read: No Operation - Returns Sucess
+ - Write: Append to audio buffer
+ - Unique IOCtl Calls
+  3: Set Mode - Set current audio mode given an structure pointer
+  4: Get Current Mode - Return current audio mode in given structure pointer
+> STRUCT `tLLAudio_Mode`
+    Uint16	ChannelCount;
+    Uint16	BufferType;
+	Uint32	Frequency
+	Uint	BufferSize;
+
+------------------
+- Network Device -
+------------------
+> Single File
+ - Read: Read a packet from the ring buffer
+ - Write: Send a packet
+ - Unique IOCtl Calls
+  3: Set MAC Address - Sets the MAC Address to the structure pointed to.
+  4: Get MAC Address - Gets the MAC Address into the pointed structure.
+  5: Get Last Timestamp - Gets the timestamp of the last packet into the 64-bit integer pointed.
+  6: Get Packet Count - Sets the integer pointed to count of packets
+> STRUCT `tNetwork_MAC`
+    Uint8	MAC[6];
+
+----------------
+- IP/TCP Layer -
+----------------
+> Directory '/'
+ - Read/Write: DIRECTORY
+ - Unique IOCtls
+  3: Add IP - Adds an IP to the layer
+  4: Delete IP - Deletes the IP referenced by the integer pointed.
+> /ip# - Where # is a zero-based integer ID
+ - Read/Write: NOP
+ - Unique IOCtl Calls
+  3: Set Device (E.g. /Devices/ne2000/0)
+  4: Set IP (v6) - Sets the IPv6 address from the 16-byte network order buffer passed
+  5: Get IP (v6) - Stores the IPv6 address in the 16-byte network order buffer passed
+  6: Set Subnet Mask Bits (v6) - Sets the subnet mask to the pointed integer
+  7: Get Subnet Mask Bits (v6) - Stores the subnet mask in the pointed integer
+  8: Set Gateway (v6) - Sets the IPv6 gateway address from the 16-byte network order buffer passed
+  9: Get Gateway (v6) - Stores the IPv6 gateway address in the 16-byte network order buffer passed
+  10: Set IP (v4) - Sets the IPv4 address from the 4-byte network order buffer passed
+  10: Get IP (v4) - Stores the IPv4 address in the 4-byte network order buffer passed
+  12: Set Subnet Mask Bits (v4) - Sets the subnet mask to the pointed integer
+  13: Get Subnet Mask Bits (v4) - Stores the subnet mask in the pointed integer
+  14: Set Gateway (v4) - Sets the IPv6 gateway address from the 4-byte network order buffer passed
+  15: Set Gateway (v4) - Stores the IPv6 gateway address in the 4-byte network order buffer passed
+> /tcpc# - Where # is the ID of an IP entry
+ - Read: Wait for packet to arrive
+ - Write: Send packet
+ - Unique IOCtl Calls
+  3: Set Destination Port - Sets the destination port from the 2 byte network order buffer passed
+  4: Get Destination Port - Stores the destination port in the 2 byte network order buffer passed
+  5: Set Source Port - Sets the source port from the 2 byte network order buffer passed
+  6: Get Source Port - Stores the source port in the 2 byte network order buffer passed
+  7: Set Destination IP (v6) - Sets the IPv6 destination address from the 16-byte network order buffer passed
+  8: Get Destination IP (v6) - Stores the IPv6 destination address in the 16-byte network order buffer passed
+  9: Set Destination IP (v4) - Sets the IPv4 destination address from the 4-byte network order buffer passed
+  10: Get Destination IP (v4) - Stores the IPv4 destination address in the 4-byte network order buffer passed
+> /tcps# - Where # is the ID of an IP entry
+ - Read/Write: Directory (Entries correspond to client connections)
+ - Unique IOCtl Calls
+  3: Set Listen Port - Sets the port to listen on from the 2 bytes network order buffer passed
+  4: Get Listen Port - Stores the port to listen on in the 2 bytes network order buffer passed
+  5: Set Flags - Sets the flags from the machine order integer pointed
+  6: Get Flags - Stores the flags in the machine order integer pointed

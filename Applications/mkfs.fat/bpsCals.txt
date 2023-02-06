@@ -1,0 +1,9 @@
+assume FAT16
+
+FAT_COUNT = 2
+2 bytes per FAT entry
+
+DataSectors = Total - (1+2*(DataSectors/spc)/256)
+DataSectors = Total/2 - 0.5
+
+Ratio = (Total/2 - 0.5) / (1+2*((Total/2 - 0.5)/spc)/256)
